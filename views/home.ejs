@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html> -->
+<html lang="ko-kr">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Page Title</title>
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="flex flex-col flex-wrap
+      hover:bg-red-50 
+      gap-5 mx-auto">
+        <header>
+            <h1 class="text-4xl font-bold text-center my-10">Noom</h1>
+        </header>
+        <main>
+            <h2 class="text-2xl font-semibold mt-16">Welcome to Noom</h2>
+            <ul id="messages"> </ul>
+
+            <form class="flex flex-col gap-9 m-16 p-16 items-center
+            rounded-2xl border-gray-600 border-solid border-4" id="submit">
+                <input class="w-full
+                border-gray-500 border-solid border-4 bg-gray-200
+                hover:bg-white"
+                type="text" placeholder="message..." required>
+                <button class="pt-2 pb-2 pl-6 pr-6
+                rounded-2xl border-gray-600 border-solid border-4 
+                active:bg-gray-600 w-fit">Send</button>
+            </form>
+        </main>
+    </div>
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>

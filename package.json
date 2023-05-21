@@ -1,0 +1,32 @@
+{
+  "name": "sock2p",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/ws": "^8.5.4",
+    "esbuild": "^0.17.19",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "dev:nodemon": "nodemon",
+    "build:ts": "tsc --build",
+    "build:es-file": "node esbuild.js",
+    "css": "postcss pub-develop/css/tailwind.css -o public/css/main.css",
+    "css:watch": "yarn tailwindcss -i pub-develop/css/tailwind.css -o public/css/main.css -w"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "postcss": "^8.4.23",
+    "postcss-cli": "^10.1.0",
+    "socket.io": "^4.6.1",
+    "tailwindcss": "^3.3.2",
+    "ws": "^8.13.0"
+  }
+}
