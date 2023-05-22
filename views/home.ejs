@@ -18,9 +18,15 @@
         </header>
         <main>
             <h2 class="text-2xl font-semibold mt-16">Welcome to Noom</h2>
-            <ul id="messages"> </ul>
-
-            <form class="flex flex-col gap-9 m-16 p-16 items-center
+            <ul id="messages">
+                <li class="mb-2">test</li>
+            </ul>
+            <form id="nickForm">
+                <input class="border-gray-500 border-solid border-4 bg-white" 
+                type="text" placeholder="your nickname", required>
+                <button>Save</button>
+            </form>
+            <form id="messageForm" class="flex flex-col gap-9 m-16 p-16 items-center
             rounded-2xl border-gray-600 border-solid border-4" id="submit">
                 <input class="w-full
                 border-gray-500 border-solid border-4 bg-gray-200

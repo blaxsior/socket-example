@@ -2,3 +2,5 @@ dist
 node_modules
 public/css/main.css
 public/js
+# 빌드 과정에서 생성되는 파일은 굳이 소스 파일로 포함할 필요 없음. 반대로 포함해도 상관 없긴 함
+**/*/d.ts(.map)?
