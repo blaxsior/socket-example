@@ -1,6 +1,6 @@
 {
   "references": [
-    {"path": "./pub-develop/js"},
+    // {"path": "./pub-develop/js"},
     {"path": "./src"},
   ],
   "compilerOptions": {
