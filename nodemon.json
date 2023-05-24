@@ -1,6 +1,6 @@
 {
-    "watch": ["src/**/*.ts", "pub-develop/js/**/*.ts"],
+    "watch": ["src/**/*.ts"],
     "ext": "ts,json",
-    "ignore": ["src/**/*.{spec,d}.ts","pub-develop/js/**/*.{spec,d}.ts"],
+    "ignore": ["src/**/*.{spec,d}.ts"],
     "exec": "tsc -b && node ./dist/index.js"
 }

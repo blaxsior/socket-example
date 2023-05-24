@@ -19,20 +19,36 @@
         <main>
             <h2 class="text-2xl font-semibold mt-16">Welcome to Noom</h2>
             <ul id="messages"> </ul>
-
-            <form class="flex flex-col gap-9 m-16 p-16 items-center
-            rounded-2xl border-gray-600 border-solid border-4" id="submit">
-                <input class="w-full
+            <div id="enter-room" class="m-16
+            rounded-2xl border-gray-600 border-solid border-4 p-16">
+                <form class="w-full flex flex-col gap-9 items-center">
+                    <input class="w-full
                 border-gray-500 border-solid border-4 bg-gray-200
-                hover:bg-white"
-                type="text" placeholder="message..." required>
-                <button class="pt-2 pb-2 pl-6 pr-6
+                hover:bg-white" type="text" placeholder="room name" required>
+                    <button class="pt-2 pb-2 pl-6 pr-6
                 rounded-2xl border-gray-600 border-solid border-4 
-                active:bg-gray-600 w-fit">Send</button>
-            </form>
+                active:bg-gray-600 w-fit">Enter Room</button>
+                </form>
+
+            </div>
+            <div id="room" class="m-16
+            rounded-2xl border-gray-600 border-solid border-4 p-16">
+            <h3 name="header" 
+            class="text-left h-10 font-bold mb-4"
+            >default</h3>
+                <form class="w-full flex flex-col gap-9 items-center ">
+                    <input class="w-full
+                    border-gray-500 border-solid border-4 bg-gray-200
+                    hover:bg-white" type="text" placeholder="messages" required>
+                    <button class="pt-2 pb-2 pl-6 pr-6
+                    rounded-2xl border-gray-600 border-solid border-4 
+                    active:bg-gray-600 w-fit">Send</button>
+                </form>
+            </div>
+            <todo-item></todo-item>
         </main>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script src="js/main.js" type="module"></script>
 </body>
 

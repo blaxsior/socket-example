@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev:nodemon": "nodemon",
-    "dev:front": "esbuild pub-develop/js/main.ts --bundle --minify --platform=browser format=esm --outdir=public/js --watch",
+    "dev:front": "node esbuild.js --watch",
     "build:ts": "tsc --build",
     "build:es-file": "node esbuild.js",
     "css": "postcss pub-develop/css/tailwind.css -o public/css/main.css",

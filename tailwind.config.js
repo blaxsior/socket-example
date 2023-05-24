@@ -10,3 +10,4 @@ export default {
   plugins: [],
 }
 
+// watch는 https://v2.tailwindcss.com/docs/installation#watching-for-changes 참고
