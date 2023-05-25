@@ -52,7 +52,6 @@ async function bundleFiles() {
         if (watch) {
             const ctx = await esbuild.context(config);
             await ctx.watch();
-            new EventSource('/esbuild')
         }
         else {
             await esbuild.build(config);

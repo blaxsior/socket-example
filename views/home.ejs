@@ -7,6 +7,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Page Title</title>
     <link href="css/main.css" rel="stylesheet">
+    <!-- <script src="js/wcoms/TodoItem.js"></script> -->
 </head>
 
 <body>
@@ -18,10 +19,9 @@
         </header>
         <main>
             <h2 class="text-2xl font-semibold mt-16">Welcome to Noom</h2>
-            <ul id="messages"> </ul>
             <div id="enter-room" class="m-16
-            rounded-2xl border-gray-600 border-solid border-4 p-16">
-                <form class="w-full flex flex-col gap-9 items-center">
+            rounded-2xl border-gray-600 border-solid border-4 p-6">
+                <form class="w-full flex flex-col gap-9 items-center mb-0">
                     <input class="w-full
                 border-gray-500 border-solid border-4 bg-gray-200
                 hover:bg-white" type="text" placeholder="room name" required>
@@ -31,25 +31,41 @@
                 </form>
 
             </div>
-            <div id="room" class="m-16
-            rounded-2xl border-gray-600 border-solid border-4 p-16">
-            <h3 name="header" 
-            class="text-left h-10 font-bold mb-4"
-            >default</h3>
-                <form class="w-full flex flex-col gap-9 items-center ">
-                    <input class="w-full
-                    border-gray-500 border-solid border-4 bg-gray-200
-                    hover:bg-white" type="text" placeholder="messages" required>
-                    <button class="pt-2 pb-2 pl-6 pr-6
-                    rounded-2xl border-gray-600 border-solid border-4 
-                    active:bg-gray-600 w-fit">Send</button>
-                </form>
+            <div id="room" class="m-16">
+                <h3 name="header" class="text-left h-10 font-bold mb-4">default</h3>
+                <ul id="messages" class="border-gray-700 border-solid border-4 p-3 mb-10"> </ul>
+
+                <div id="name" class="mb-16
+                rounded-2xl border-gray-600 border-solid border-4 p-6">
+                    <form class="w-full flex flex-col gap-9 items-center mb-0">
+                        <input class="w-full
+                        border-gray-500 border-solid border-4 bg-gray-200
+                        hover:bg-white" type="text" placeholder="name" required>
+                        <button class="pt-2 pb-2 pl-6 pr-6
+                        rounded-2xl border-gray-600 border-solid border-4 
+                        active:bg-gray-600 w-fit">Change Name</button>
+                    </form>
+                </div>
+                <div id="msg" class="
+                rounded-2xl border-gray-600 border-solid border-4 p-6">
+                    <form class="w-full flex flex-col gap-9 items-center mb-0">
+                        <input class="w-full
+                        border-gray-500 border-solid border-4 bg-gray-200
+                        hover:bg-white" type="text" placeholder="messages" required>
+                        <button class="pt-2 pb-2 pl-6 pr-6
+                        rounded-2xl border-gray-600 border-solid border-4 
+                        active:bg-gray-600 w-fit">Send</button>
+                    </form>
+                </div>
             </div>
-            <todo-item></todo-item>
+            <!-- <todo-item>
+                hello
+                <span slot="description">small text</span>
+            </todo-item> -->
         </main>
     </div>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
-    <script src="js/main.js" type="module"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
