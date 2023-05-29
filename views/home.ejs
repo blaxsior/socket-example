@@ -18,57 +18,21 @@
             <h1 class="text-4xl font-bold text-center my-10">Noom</h1>
         </header>
         <main>
-            <h2 class="text-2xl font-semibold mt-16">Welcome to Noom</h2>
-            <div id="enter-room" class="m-16
-            rounded-2xl border-gray-600 border-solid border-4 p-6">
-                <form class="w-full flex flex-col gap-9 items-center mb-0">
-                    <input class="w-full
-                border-gray-500 border-solid border-4 bg-gray-200
-                hover:bg-white" type="text" placeholder="room name" required>
-                    <button class="pt-2 pb-2 pl-6 pr-6
-                rounded-2xl border-gray-600 border-solid border-4 
-                active:bg-gray-600 w-fit">Enter Room</button>
-                </form>
-                <h4 class="text-xl font-semibold">Rooms: </h4>
-                <ul name="exist-rooms">
-                    <!-- rooms -->
-                </ul>
-            </div>
-            <div id="room" class="m-16">
-                <h3 name="header" class="text-left h-10 font-bold mb-4">default</h3>
-                <ul id="messages" class="border-gray-700 border-solid border-4 p-3 mb-10"> </ul>
-
-                <div id="name" class="mb-16
-                rounded-2xl border-gray-600 border-solid border-4 p-6">
-                    <form class="w-full flex flex-col gap-9 items-center mb-0">
-                        <input class="w-full
-                        border-gray-500 border-solid border-4 bg-gray-200
-                        hover:bg-white" type="text" placeholder="name" required>
-                        <button class="pt-2 pb-2 pl-6 pr-6
-                        rounded-2xl border-gray-600 border-solid border-4 
-                        active:bg-gray-600 w-fit">Change Name</button>
-                    </form>
-                </div>
-                <div id="msg" class="
-                rounded-2xl border-gray-600 border-solid border-4 p-6">
-                    <form class="w-full flex flex-col gap-9 items-center mb-0">
-                        <input class="w-full
-                        border-gray-500 border-solid border-4 bg-gray-200
-                        hover:bg-white" type="text" placeholder="messages" required>
-                        <button class="pt-2 pb-2 pl-6 pr-6
-                        rounded-2xl border-gray-600 border-solid border-4 
-                        active:bg-gray-600 w-fit">Send</button>
-                    </form>
-                </div>
-            </div>
-            <!-- <todo-item>
-                hello
-                <span slot="description">small text</span>
-            </todo-item> -->
+            <video id="face" class="text-center border-2 border-gray-600 border-solid" autoplay width="400" height="400">Camera is offline...</video>
+            <select id="cameras" class="border-2 border-gray border-solid">
+            </select>
+            <button id="mute" class="rounded-md border-solid border-gray-800 border-2
+             py-2 px-3 m-1 
+             hover:bg-gray-300 
+             active:bg-gray-400">Mute</button>
+            <button id="cam" class="rounded-md border-solid border-gray-800 border-2
+            py-2 px-3 m-1 
+            hover:bg-gray-300 
+            active:bg-gray-400">Camera Off</button>
         </main>
     </div>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 
 </html>

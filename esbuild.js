@@ -47,6 +47,7 @@ async function bundleFiles() {
             bundle: true,
             minify: true,
             outdir: outdir,
+            format: 'esm'
         }; // esbuild config
        
         if (watch) {

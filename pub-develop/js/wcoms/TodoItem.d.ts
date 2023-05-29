@@ -1,5 +1,2 @@
-declare const template: HTMLTemplateElement;
-declare class TodoItem extends HTMLElement {
-    constructor();
-}
+export {};
 //# sourceMappingURL=TodoItem.d.ts.map

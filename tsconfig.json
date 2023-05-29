@@ -4,6 +4,9 @@
     {"path": "./src"},
   ],
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "nodenext",
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,

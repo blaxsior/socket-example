@@ -1,101 +1,87 @@
 import { io } from 'socket.io-client';
 
-const enterDiv = document.querySelector("#enter-room") as HTMLDivElement;
-const roomDiv = document.querySelector("#room") as HTMLDivElement;
-roomDiv.hidden = true;
-
-let roomName = '';
-
 const socket = io();
-socket.on('welcome', (name, count) => {
-    addMessage(`[system] User ${name} joined`);
-    changeRoomNumberCount(count);
-});
-socket.on('bye', (name, count) => {
-    addMessage(`[system] User ${name} exited`);
-    changeRoomNumberCount(count);
-})
-socket.on('message', (user, msg) => {
-    addMessage(`[${user}]: ${msg}`);
-})
-socket.on('name-change', (name_bef, name_aft) => {
-    addMessage(`[system] User ${name_bef} changed his name to ${name_aft}`);
-})
-socket.on('room-change', (rooms: [string, number][]) => {
-    console.log(rooms);
-    const roomsElem = enterDiv.querySelector('[name="exist-rooms"]');
-    roomsElem.innerHTML = '';
-    if (rooms.length === 0) {
-        return;
-    }
-    rooms.forEach(room => {
-        const li = document.createElement('li');
-        li.innerText = `${room[0]}(${room[1]})`;
-        roomsElem.appendChild(li);
-    })
-})
+const face = document.querySelector('#face') as HTMLVideoElement;
+const muteBtn = document.querySelector('#mute') as HTMLButtonElement;
+const cameraBtn = document.querySelector('#cam') as HTMLButtonElement;
+const cameraSelect = document.querySelector('#cameras') as HTMLSelectElement;
 
-function showRoom(roomName: string) {
-    enterDiv.hidden = true;
-    const roomNameElem = roomDiv.querySelector("h3[name='header']");
-    roomNameElem.textContent = `Room: ${roomName}`;
-    roomDiv.hidden = false;
-}
+// 초기에는 첫번째 카메라 사용
+let stream = await getMedia((await getCameraDevices())[0].deviceId);
+await setCameraList(cameraSelect);
+let muted = false;
+let cameraOff = false;
 
-function handleRoomSubmit(event: SubmitEvent) {
-    event.preventDefault();
-    const input = enterDiv.querySelector('input');
-    if (input) {
-        roomName = input.value;
-        input.value = '';
-        socket.emit('enter-room', { payload: roomName }, () => {
-            console.log("server is done!");
-        });
-        showRoom(roomName);
+async function getMedia(deviceId?: string) {
+    const init = {
+        audio: true,
+        video: {facingMode: "user"}
+    };
+    const camConstraint = {
+        audio: true,
+        video: {deviceId: {exact: deviceId}}
+    };
+
+    try {
+        let stream = await window.navigator.mediaDevices.getUserMedia(
+            deviceId? camConstraint : init
+        );
+        // console.log(stream.getTracks())
+        face.srcObject = stream;
+        return stream;
+    } catch(e) {
+        console.log(e);
+        return null;
     }
 }
 
-function sendMessageSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    const input = roomDiv.querySelector('#msg input') as HTMLInputElement;
-    if (input) {
-        const msg = input.value;
-        input.value = '';
-
-        if (msg) {
-            socket.emit('message', msg, roomName, () => {
-                addMessage(`[you]: ${msg}`);
-            })
-        }
-    }
+async function setCameraList(select: HTMLSelectElement) {
+    const cameras = await getCameraDevices();
+    cameras.forEach(it => {
+        const citem = document.createElement('option');
+        citem.value = it.deviceId;
+        citem.innerText = it.label;
+        select.appendChild(citem);
+    });
 }
-function nameSubmit(e: SubmitEvent) {
-    e.preventDefault();
-    const input = roomDiv.querySelector('#name input') as HTMLInputElement;
-    if (input) {
-        const msg = input.value;
-        input.value = '';
 
-        if (msg) {
-            socket.emit('name-change', msg, roomName, () => {
-                addMessage(`[system] your name is ${msg}`);
-            })
-        }
+async function chooseCamera(e: Event) {
+    const cid = (e.target as HTMLSelectElement).value;
+    stream = await getMedia(cid);
+}
+
+async function getCameraDevices() {
+    try {
+        const devices = await window.navigator.mediaDevices.enumerateDevices();
+        return devices.filter(it => it.kind==='videoinput');
+    } catch(e) {
+        console.log(e);
+        return null;
     }
 }
 
-function addMessage(msg: string) {
-    const msgList = roomDiv.querySelector("ul");
-    const li = document.createElement('li');
-    li.textContent = msg;
-    msgList.appendChild(li);
+function handleMuteClick() {
+    stream.getAudioTracks().forEach(it => it.enabled = !it.enabled);
+    if(!muted) {
+        muteBtn.innerText = "Unmute";
+        muted = true;
+    } else {
+        muteBtn.innerText = "Mute";
+        muted = false;
+    }
 }
 
-function changeRoomNumberCount(count:number) {
-    const roomNameElem = roomDiv.querySelector("h3[name='header']");
-    roomNameElem.textContent = `Room: ${roomName}(${count})`;
+function handleCameraClick() {
+    stream.getVideoTracks().forEach(it => it.enabled = !it.enabled);
+    if(!cameraOff) {
+        cameraBtn.innerText = "Camera On";
+        cameraOff = true;
+    } else {
+        cameraBtn.innerText = "Camera Off";
+        cameraOff = false;
+    }
 }
 
-enterDiv.addEventListener('submit', handleRoomSubmit);
-roomDiv.querySelector('#name form')?.addEventListener('submit', nameSubmit);
-roomDiv.querySelector('#msg form')?.addEventListener('submit', sendMessageSubmit);
+muteBtn.addEventListener('click', handleMuteClick);
+cameraBtn.addEventListener('click', handleCameraClick);
+cameraSelect.addEventListener('input', chooseCamera);
