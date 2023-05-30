@@ -18,17 +18,32 @@
             <h1 class="text-4xl font-bold text-center my-10">Noom</h1>
         </header>
         <main>
-            <video id="face" class="text-center border-2 border-gray-600 border-solid" autoplay width="400" height="400">Camera is offline...</video>
-            <select id="cameras" class="border-2 border-gray border-solid">
-            </select>
-            <button id="mute" class="rounded-md border-solid border-gray-800 border-2
+            <div id="welcome">
+                <form id="enter-room">
+                    <input class='border-2 border-solid border-gray-300 hover:border-gray-800' type="text"
+                        placeholder="room name" required>
+                    <button
+                        class='border-2 border-solid border-gray-300 hover:border-gray-800 rounded-lg active:bg-gray-400 px-4 py-2'>Enter
+                        Room</button>
+                </form>
+            </div>
+            <div id="call">
+                <video id="face" class="text-center border-2 border-gray-600 border-solid" autoplay width="400"
+                    height="400">Camera is offline...</video>
+                <video id="otherface" class="text-center border-2 border-gray-600 border-solid" autoplay width="400"
+                    height="400">Camera is offline...</video>
+                <select id="cameras" class="border-2 border-gray border-solid">
+                </select>
+                <button id="mute" class="rounded-md border-solid border-gray-800 border-2
              py-2 px-3 m-1 
              hover:bg-gray-300 
              active:bg-gray-400">Mute</button>
-            <button id="cam" class="rounded-md border-solid border-gray-800 border-2
+                <button id="cam" class="rounded-md border-solid border-gray-800 border-2
             py-2 px-3 m-1 
             hover:bg-gray-300 
             active:bg-gray-400">Camera Off</button>
+            </div>
+
         </main>
     </div>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
